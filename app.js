@@ -1,5 +1,4 @@
 var vorpal = require('vorpal')();
-var Table = require('cli-table');
 
 var Game = function() {
   this.board = [
@@ -35,12 +34,15 @@ Game.prototype.checkForWin = function () {
 }
 
 Game.prototype.drawBoard = function () {
-  var table = new Table({head: [Math.random(), "Column 0", "Column 1", "Column 2"] });
-  table.push(
-    { 'Row 0': this.board[0] },
-    { 'Row 1': this.board[1] },
-    { 'Row 2': this.board[2] }
-  );
+  return '|-------------------------------|\n' +
+         '|       | Col 0 | Col 1 | Col 2 |\n' +
+         '|-------|-------|-------|-------|\n' +
+         '| Row 0 |   ' + this.board[0][0] +  '   |   ' + this.board[0][1] + '   |   ' + this.board[0][2] + '   |\n' +
+         '|-------|-------|-------|-------|\n' +
+         '| Row 1 |   ' + this.board[1][0] +  '   |   ' + this.board[1][1] + '   |   ' + this.board[1][2] + '   |\n' +
+         '|-------|-------|-------|-------|\n' +
+         '| Row 2 |   ' + this.board[2][0] +  '   |   ' + this.board[2][1] + '   |   ' + this.board[2][2] + '   |\n' +
+         '|-------------------------------|\n';
 
   var tableString = table.toString();
   //return tableString;
